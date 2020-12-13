@@ -2,8 +2,8 @@
 /*
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 14:27:04
- * @LastEditTime: 2020-12-14 10:55:44
- * @LastEditors: 郑浩龙-2018141493022
+ * @LastEditTime: 2020-12-14 02:14:19
+ * @LastEditors: Please set LastEditors
  * @Description: 欢迎界面的GUI
  * @FilePath: \dirayEditor\src\main\java\GUI\StartGUI.java
  */
@@ -11,15 +11,12 @@ package GUI;
 
 import java.awt.*;
 import java.awt.event.*;
-// import java.awt.event.KeyAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.MouseInputAdapter;
-
-import org.w3c.dom.events.MouseEvent;
 
 public class StartGUI extends JFrame {
     /**
@@ -37,6 +34,7 @@ public class StartGUI extends JFrame {
 
     public static void main(String args[]) {
         runGUI();
+        System.out.println("Start app");
     }
 
     public static void runGUI() {
@@ -72,7 +70,7 @@ public class StartGUI extends JFrame {
         loginButton = new JButton("登录");
         loginButton.setBounds(new Rectangle(65, 263, LayOut.BUTTON_WIDTH, LayOut.BUTTON_HEIGHT));
         loginButton.setFont(new Font("Microsoft YaHei", Font.PLAIN, 12));
-        loginButton.addMouseListener(new MouseInputAdapter() {
+        loginButton.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent mouseEvent) {
                 event_Login();
             }
@@ -87,8 +85,9 @@ public class StartGUI extends JFrame {
         registerButton = new JButton("注册");
         registerButton.setBounds(new Rectangle(489, 263, LayOut.BUTTON_WIDTH, LayOut.BUTTON_HEIGHT));
         registerButton.setFont(new Font(LayOut.WINDOWFONT, Font.PLAIN, 12));
-        registerButton.addMouseListener(new MouseInputAdapter() {
-            public void mouseClicked(MouseEvent mouseEvent) {
+        registerButton.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("mouseClicked");
                 event_Register();
             }
         });

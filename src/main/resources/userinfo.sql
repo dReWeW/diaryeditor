@@ -1,3 +1,5 @@
+-- 用户信息表
+
 USE diarydb;
 
 CREATE TABLE USERS
