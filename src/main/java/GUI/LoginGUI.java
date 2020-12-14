@@ -1,13 +1,15 @@
 /*
- * @Descripttion: 登录界面GUI
+ * @Descripttion: 注册界面GUI
  * @version: 1.0
  * @Author: 郑浩龙-2018141493022
- * @Date: 2020-12-13 19:49:10
+ * @Date: 2020-12-13 19:49:19
  * @LastEditors: 郑浩龙-2018141493022
- * @LastEditTime: 2020-12-13 19:50:37
+ * @LastEditTime: 2020-12-14 08:20:26
  */
 package GUI;
 
-public class LoginGUI {
+import javax.swing.JFrame;
+
+public class LoginGUI extends JFrame {
 
 }
