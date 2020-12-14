@@ -3,8 +3,8 @@
  * @version: 
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-14 10:50:06
- * @LastEditors: 郑浩龙-2018141493022
- * @LastEditTime: 2020-12-14 10:52:29
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-12-14 09:36:39
  */
 package GUI;
 
@@ -14,4 +14,5 @@ public class LayOut {
     public static final int BUTTON_WIDTH = 124;
     public static final int BUTTON_HEIGHT = 45;
     public static String WINDOWFONT = "Microsoft YaHei";
+    public static final boolean DEBUG = true;
 }

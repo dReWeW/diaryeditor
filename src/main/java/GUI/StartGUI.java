@@ -2,7 +2,7 @@
 /*
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 14:27:04
- * @LastEditTime: 2020-12-14 02:14:19
+ * @LastEditTime: 2020-12-14 09:17:03
  * @LastEditors: Please set LastEditors
  * @Description: 欢迎界面的GUI
  * @FilePath: \dirayEditor\src\main\java\GUI\StartGUI.java
@@ -105,7 +105,7 @@ public class StartGUI extends JFrame {
 
     private void event_Login() {
         setVisible(false);
-        // new LoginGUI().loginGUI();
+        LoginGUI.callLoginGUI();
 
     }
 

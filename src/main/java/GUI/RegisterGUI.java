@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-14 05:10:01
+ * @LastEditTime: 2020-12-14 09:26:14
  */
 package GUI;
 
@@ -73,7 +73,7 @@ public class RegisterGUI extends JFrame {
 
         userPwField = new JTextField();
         userPwField.setBounds(new Rectangle(200, 300, 200, 30));
-        userPwField.setColumns(10);
+        userPwField.setColumns(24);
         registerPanel.add(userPwField);
 
         userConfirmLabel = new JLabel("确认密码");

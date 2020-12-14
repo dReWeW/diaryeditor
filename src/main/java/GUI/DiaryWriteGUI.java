@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:34
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-14 05:04:06
+ * @LastEditTime: 2020-12-14 09:50:33
  */
 package GUI;
 
@@ -65,6 +65,7 @@ public class DiaryWriteGUI extends JFrame {
         setBounds(100, 100, LayOut.WINDOW_WIDTH, LayOut.WINDOW_HEIGHT);
         panel.setLayout(null);
         panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        setContentPane(panel);
 
         tabbedPane = new JTabbedPane();
         tabbedPane.setToolTipText("Notion");
@@ -130,24 +131,31 @@ public class DiaryWriteGUI extends JFrame {
                 event_back();
             }
         });
+        // 编辑窗体初始化
         editorFrame = new JInternalFrame("日记编辑窗口");
-        editorFrame.setBounds(0, 77, 584, 275);
-
-        titleField = new JTextField("日记标题");
-        titleField.setFont(new Font(LayOut.WINDOWFONT, Font.BOLD, 14));
-        titleField.setBounds(new Rectangle(200, 400, 200, 30));
-        titleField.setColumns(20);
-        editorFrame.getContentPane().add(titleField);
-
-        authorField = new JTextField("作者");
-        authorField.setFont(new Font(LayOut.WINDOWFONT, Font.ITALIC, 10));
-        authorField.setBounds(new Rectangle(200, 360, 100, 20));
-        authorField.setColumns(16);
-        editorFrame.getContentPane().add(authorField);
+        editorFrame.setBounds(0, 77, 584, 500);
+        panel.add(editorFrame);
+        editorFrame.getContentPane().setLayout(null);
 
         diaryEditor = new JTextPane();
         diaryEditor.setBounds(new Rectangle(0, 31, 568, 179));
         editorFrame.getContentPane().add(diaryEditor);
+
+        titleField = new JTextField();
+        if (LayOut.DEBUG)
+            titleField.setText("标题");
+        titleField.setFont(new Font(LayOut.WINDOWFONT, Font.BOLD, 8));
+        titleField.setBounds(new Rectangle(5, 5, 200, 20));
+        titleField.setColumns(20);
+        editorFrame.getContentPane().add(titleField);
+
+        authorField = new JTextField();
+        if (LayOut.DEBUG)
+            authorField.setText("作者");
+        authorField.setFont(new Font(LayOut.WINDOWFONT, Font.ITALIC, 6));
+        authorField.setBounds(new Rectangle(300, 5, 100, 20));
+        authorField.setColumns(16);
+        editorFrame.getContentPane().add(authorField);
 
         saveButton = new JButton("保存");
         saveButton.setBounds(465, 213, 93, 23);
@@ -156,6 +164,8 @@ public class DiaryWriteGUI extends JFrame {
                 event_save();
             }
         });
+
+        editorFrame.setVisible(true);
     }
 
     private void event_read() {
