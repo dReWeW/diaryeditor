@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import java.sql.Connection;
+// import java.sql.Connection;
 //sql部分待施工
 
 public class RegisterGUI extends JFrame {

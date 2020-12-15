@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-14 10:50:06
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-14 09:36:39
+ * @LastEditTime: 2020-12-15 22:28:00
  */
 package GUI;
 
@@ -15,4 +15,5 @@ public class LayOut {
     public static final int BUTTON_HEIGHT = 45;
     public static String WINDOWFONT = "Microsoft YaHei";
     public static final boolean DEBUG = true;
+    public static final int DIARYSIZE = 20;
 }

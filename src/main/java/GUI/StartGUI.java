@@ -2,7 +2,7 @@
 /*
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 14:27:04
- * @LastEditTime: 2020-12-14 09:17:03
+ * @LastEditTime: 2020-12-15 19:44:28
  * @LastEditors: Please set LastEditors
  * @Description: 欢迎界面的GUI
  * @FilePath: \dirayEditor\src\main\java\GUI\StartGUI.java
@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 public class StartGUI extends JFrame {
@@ -33,6 +34,11 @@ public class StartGUI extends JFrame {
     private JButton registerButton;
 
     public static void main(String args[]) {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         runGUI();
         System.out.println("Start app");
     }
@@ -42,9 +48,13 @@ public class StartGUI extends JFrame {
 
             @Override
             public void run() {
-                // TODO Auto-generated method stub
-                StartGUI myNewDiaryEditorGui = new StartGUI();
-                myNewDiaryEditorGui.setVisible(true);
+                try {
+                    // TODO Auto-generated method stub
+                    StartGUI myNewDiaryEditorGui = new StartGUI();
+                    myNewDiaryEditorGui.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
