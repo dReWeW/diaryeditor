@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:34
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-14 09:50:33
+ * @LastEditTime: 2020-12-15 11:58:46
  */
 package GUI;
 
@@ -30,6 +30,7 @@ import javax.swing.JTextPane;
 import javax.swing.plaf.basic.BasicTabbedPaneUI.MouseHandler;
 
 public class DiaryWriteGUI extends JFrame {
+    private static final long serialVersionUID = 4L;
     private JPanel panel;
     private JTabbedPane tabbedPane;// 选项卡
     private JButton readButton;

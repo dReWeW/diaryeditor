@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:19
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-14 09:29:10
+ * @LastEditTime: 2020-12-15 11:58:15
  */
 package GUI;
 
@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class LoginGUI extends JFrame {
+    private static final long serialVersionUID = 2L;
     private JButton loginButton;
     private JButton backButton;
     private JLabel userLabel;

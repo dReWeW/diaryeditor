@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-14 09:26:14
+ * @LastEditTime: 2020-12-15 11:58:27
  */
 package GUI;
 
@@ -22,6 +22,7 @@ import java.sql.Connection;
 //sql部分待施工
 
 public class RegisterGUI extends JFrame {
+    private static final long serialVersionUID = 3L;
     private JPanel registerPanel;
     private JLabel userNameLabel;
     private JLabel userPwLabel;
