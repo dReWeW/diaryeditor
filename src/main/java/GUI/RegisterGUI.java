@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-15 11:58:27
+ * @LastEditTime: 2020-12-16 17:14:49
  */
 package GUI;
 
@@ -17,6 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import util.UserManager;
+
+import javax.swing.JOptionPane;
 
 // import java.sql.Connection;
 //sql部分待施工
@@ -105,7 +109,7 @@ public class RegisterGUI extends JFrame {
 
         registerPanel.add(backButton);
 
-        // 注册Button设置（待施工）
+        // 注册Button设置
         signUpButton = new JButton("注册");
         signUpButton.setBounds(65, 263, LayOut.BUTTON_WIDTH, LayOut.BUTTON_HEIGHT);
         signUpButton.setFont(new Font(LayOut.WINDOWFONT, Font.PLAIN, 12));
@@ -126,7 +130,23 @@ public class RegisterGUI extends JFrame {
     }
 
     private void event_signup() {
-
+        String username = userNameField.getText();
+        String password = userPwField.getText();
+        String passwdConfirm = userConfirmField.getText();
+        if (!password.equals(passwdConfirm)) {
+            JOptionPane.showMessageDialog(this, "两次密码输入不同", "错误", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            try {
+                UserManager usermanager = new UserManager();
+                usermanager.writeUser(username, password);
+                JOptionPane.showMessageDialog(this, "注册成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        setVisible(false);
+        LoginGUI.callLoginGUI();
     }
 
     private void event_back() {

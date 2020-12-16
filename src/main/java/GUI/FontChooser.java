@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-15 18:54:11
- * @LastEditTime: 2020-12-15 23:30:29
+ * @LastEditTime: 2020-12-16 21:23:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \dirayEditor\src\main\java\GUI\FontChooser.java
@@ -200,6 +200,7 @@ public class FontChooser extends JPanel {
         add(txtStyle);
         txtStyle.setBounds(175, 30, 130, 20);
         lstStyle.setBorder(javax.swing.BorderFactory.createLineBorder(Color.gray));
+        // lstStyle.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         add(lstStyle);
         lstStyle.setBounds(175, 50, 130, 100);
         txtStyle.setText("常规"); // 初始化为默认的样式

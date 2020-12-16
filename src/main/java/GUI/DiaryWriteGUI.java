@@ -4,7 +4,7 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:34
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-15 23:09:40
+ * @LastEditTime: 2020-12-16 23:12:28
  */
 package GUI;
 
@@ -36,9 +36,14 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.plaf.ListUI;
 import javax.swing.plaf.basic.BasicTabbedPaneUI.MouseHandler;
 
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
@@ -69,6 +74,20 @@ public class DiaryWriteGUI extends JFrame {
     private JScrollPane editorScrollBar;
     private JTextField titleField;
     private JFileChooser fileChooser;
+    private JPanel testPanel;
+
+    // 测试方法
+    public static void main(String args[]) {
+        DiaryWriteGUI.callDiaryGUI();
+    }
+
+    {
+        try {
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void callDiaryGUI() {
         EventQueue.invokeLater(new Runnable() {
@@ -104,43 +123,53 @@ public class DiaryWriteGUI extends JFrame {
         tabPanel.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
         // 工作区各按钮初始化
         backButton = new JButton();
+        backButton.setToolTipText("返回上一级");
         ImageIcon backImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\back.png");
         // 添加快捷键（太麻烦了JAVA添加快捷键，只添加一个）
         backButton.registerKeyboardAction(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (LayOut.DEBUG) {
+                    System.out.println("actionPerformed!");
+                }
                 event_back();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK), JComponent.WHEN_IN_FOCUSED_WINDOW);
         backButton.setIcon(backImageIcon);
 
-        alignLeftButton = new JButton();
+        alignLeftButton = new JButton("");
+        alignLeftButton.setToolTipText("左对齐");
         ImageIcon alignLeftImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\left.png");
         alignLeftButton.setIcon(alignLeftImageIcon);
 
         alignCenterButton = new JButton();
+        alignCenterButton.setToolTipText("居中对齐");
         ImageIcon alignCenterImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\center.png");
         alignCenterButton.setIcon(alignCenterImageIcon);
 
         alignRightButton = new JButton();
+        alignRightButton.setToolTipText("右对齐");
         ImageIcon alignRightImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\right.png");
         alignRightButton.setIcon(alignRightImageIcon);
 
         alignJustifyButton = new JButton();
+        alignJustifyButton.setToolTipText("自适应");
         ImageIcon alignJustifyImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\justify.png");
         alignJustifyButton.setIcon(alignJustifyImageIcon);
 
         backgroundColorButton = new JButton();
+        backgroundColorButton.setToolTipText("背景颜色");
         ImageIcon backgroundColorImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\color.png");
         backgroundColorButton.setIcon(backgroundColorImageIcon);
 
         selectAllButton = new JButton();
+        selectAllButton.setToolTipText("全选");
         ImageIcon selectAllImageIcon = new ImageIcon(
                 "H:\\JavaWorkSpace\\vscode_for_java\\dirayEditor\\src\\main\\resources\\paste.png");
         selectAllButton.setIcon(selectAllImageIcon);
@@ -151,7 +180,18 @@ public class DiaryWriteGUI extends JFrame {
         // 日记列表初始化
         diaryNames = new String[LayOut.DIARYSIZE];
         diaryNums = 0;
-        diaryList = new JList(diaryNames);
+        if (LayOut.DEBUG) {
+            diaryNames[0] = "与海航的一天scxasdasdasd";
+            diaryNums += 1;
+            diaryNames[1] = "海海";
+        }
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.addElement("海海");
+        diaryList = new JList(listModel);
+        diaryList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // 设置JList布局
+        // diaryList.setFont(new Font(LayOut.WINDOWFONT, Font.PLAIN, 20));
+        // diaryList.setFixedCellHeight(20);
         tabPanel.add(backButton);
         tabPanel.add(alignLeftButton);
         tabPanel.add(alignCenterButton);
@@ -160,9 +200,16 @@ public class DiaryWriteGUI extends JFrame {
         tabPanel.add(backgroundColorButton);
         tabPanel.add(selectAllButton);
 
+        testPanel = new JPanel();
+        testPanel.setLayout(new BoxLayout(testPanel, BoxLayout.X_AXIS));
+        testPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel.add(testPanel);
+        // 日记编辑区
         diaryEditor = new JTextPane();
         diaryEditor.setBounds(new Rectangle(0, 31, 568, 179));
-        panel.add(diaryEditor);
+        // panel.setLayout(new BoxLayout(tabPanel, BoxLayout.X_AXIS));
+        testPanel.add(diaryList);
+        testPanel.add(diaryEditor);
 
         titleField = new JTextField();
         if (LayOut.DEBUG)

@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-12-14 03:46:09
- * @LastEditTime: 2020-12-16 15:25:17
- * @LastEditors: 郑浩龙-2018141493022
+ * @LastEditTime: 2020-12-16 17:10:35
+ * @LastEditors: Please set LastEditors
  * @Description: 控制user信息与数据库的链接
  * @FilePath: \dirayEditor\src\main\java\\util\UserManager.java
  */
@@ -18,6 +18,7 @@ public class UserManager {
     private static Connection con;
     static {
         try {
+            System.out.println("static code block!\n");
             Properties pro = new Properties();
             InputStream in = UserManager.class.getClassLoader().getResourceAsStream("jdbc.properties");
             pro.load(in);
@@ -30,10 +31,11 @@ public class UserManager {
         }
     }
 
-    public static boolean readUser(String username, String password) throws IOException {
+    public boolean readUser(String username, String password) throws IOException {
         try {
-            Class.forName(driverClass);
+            // Class.forName(driverClass);
             con = DriverManager.getConnection(url, userName, passWord);
+            con.setAutoCommit(false);
             Statement stmt = con.createStatement();
             String sql = String.format(
                     "SELECT UserName,UserPassword from USERS WHERE UserName='%s' AND UserPassword=%s", username,
@@ -58,12 +60,13 @@ public class UserManager {
 
     }
 
-    public static void writeUser(String username, String password) throws IOException {
+    public void writeUser(String username, String password) throws IOException {
         try {
-            Class.forName(driverClass);
+            // Class.forName(driverClass);
             con = DriverManager.getConnection(url, userName, passWord);
+            con.setAutoCommit(false);
             Statement stmt = con.createStatement();
-            String sql = String.format("INSERT INTO USERS VALUES(%s,%s)", username, password);
+            String sql = String.format("INSERT INTO USERS VALUES('%s','%s')", username, password);
             // ResultSet rs = stmt.executeQuery(sql);
             stmt.executeUpdate(sql);
             con.commit();

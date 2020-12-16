@@ -4,9 +4,11 @@
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-13 19:49:19
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-15 11:58:15
+ * @LastEditTime: 2020-12-16 17:19:31
  */
 package GUI;
+
+import util.UserManager;
 
 import java.awt.event.*;
 import java.awt.EventQueue;
@@ -20,6 +22,7 @@ import javax.swing.JTextField;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 public class LoginGUI extends JFrame {
     private static final long serialVersionUID = 2L;
@@ -107,8 +110,22 @@ public class LoginGUI extends JFrame {
 
     // 数据库访问（待施工）
     private void event_Login() {
-        setVisible(false);
-        DiaryWriteGUI.callDiaryGUI();
+        String username = userField.getText();
+        String password = pwField.getText();
+        try {
+            UserManager usermanager = new UserManager();
+            if (usermanager.readUser(username, password)) {
+                JOptionPane.showMessageDialog(this, "登录成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+                DiaryWriteGUI.callDiaryGUI();
+            } else {
+                JOptionPane.showMessageDialog(this, "用户名或密码不正确", "成功", JOptionPane.INFORMATION_MESSAGE);
+                userField.setText("");
+                pwField.setText("");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void event_back() {
