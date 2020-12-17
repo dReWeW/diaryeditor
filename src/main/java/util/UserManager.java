@@ -1,15 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2020-12-14 03:46:09
- * @LastEditTime: 2020-12-16 17:10:35
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-12-17 17:57:14
+ * @LastEditors: 郑浩龙-2018141493022
  * @Description: 控制user信息与数据库的链接
  * @FilePath: \dirayEditor\src\main\java\\util\UserManager.java
  */
 package util;
 
+import GUI.LayOut;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.spec.ECFieldF2m;
 import java.sql.*;
 import java.util.Properties;
 
@@ -60,6 +63,15 @@ public class UserManager {
 
     }
 
+    public static void main(String args[]) {
+        UserManager u = new UserManager();
+        try {
+            u.writeUser("drew", "123456");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void writeUser(String username, String password) throws IOException {
         try {
             // Class.forName(driverClass);
@@ -69,7 +81,9 @@ public class UserManager {
             String sql = String.format("INSERT INTO USERS VALUES('%s','%s')", username, password);
             // ResultSet rs = stmt.executeQuery(sql);
             stmt.executeUpdate(sql);
+            stmt.executeUpdate(sql);
             con.commit();
+            // 创建用户表
             con.close();
             stmt.close();
 

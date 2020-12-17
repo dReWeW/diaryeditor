@@ -3,8 +3,8 @@
  * @version: 
  * @Author: 郑浩龙-2018141493022
  * @Date: 2020-12-14 10:50:06
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-12-15 22:28:00
+ * @LastEditors: ???-2018141493022
+ * @LastEditTime: 2020-12-17 10:50:48
  */
 package GUI;
 
@@ -16,4 +16,5 @@ public class LayOut {
     public static String WINDOWFONT = "Microsoft YaHei";
     public static final boolean DEBUG = true;
     public static final int DIARYSIZE = 20;
+    public static final String resourcePath = "P:/JavaWorkSpace/personalblog/diaryeditor/src/main/resources/";
 }
